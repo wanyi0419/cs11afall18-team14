@@ -68,7 +68,7 @@ public class BAttelShip2
 
 	public static void Hit () throws Exception
 	{
-		System.out.print("Round"+" "+count);
+		System.out.print("Round" + count);
 		System.out.println();
 		Scanner console = new Scanner(System.in);
 		System.out.print("Your Turn Now!!!! Please choose where to hit. (enter x position and y position)");
@@ -132,7 +132,7 @@ public class BAttelShip2
 			System.out.println("You win");
 			end();
 		}
-		if (maxHit == x1 || maxHitc == y1)
+		if (maxHitc == x1 || maxHitc == y1)
 		{
 			System.out.println("You lose");
 			end();
