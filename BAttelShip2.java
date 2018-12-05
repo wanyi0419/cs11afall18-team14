@@ -18,9 +18,10 @@ public class BAttelShip2
 	static int[][] map = new int[5][5];
 	static int count=1;
 	static int maxHit=0;
+	static int maxHitc=0;
 
 	
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception 
 	{
 		// TODO Auto-generated method stub
 		System.out.print("In this game you will first set up your Battleship. Then if you hit the enemy's ship, you win, if the enemy hit your ship, you lose.");
@@ -31,13 +32,8 @@ public class BAttelShip2
 	}
 	
 	
-	public static void StartGame()
+	public static void StartGame() throws Exception
 	{   
-		if (x1==6) 
-		{
-			int[][] map3 = new int[5][5];
-			map3[x1][0] = 1;
-		}
 		System.out.print("Now set up your Battleship.");
 	    System.out.println();
 		Scanner console = new Scanner(System.in);	
@@ -70,7 +66,7 @@ public class BAttelShip2
 	}
 	
 	
-	public static void Hit ()
+	public static void Hit () throws Exception
 	{
 		System.out.print("Round"+" "+count);
 		System.out.println();
@@ -117,16 +113,24 @@ public class BAttelShip2
 		}
 	}
 	
-	public static void MaxHit() 
+	public static void MaxHit() throws Exception 
 	{
 		x2=comp.getPosx();
 		y2=comp.getPosy();
+		x1=user.getPosx();
+		y1=user.getPosy();
 		Scanner console = new Scanner(System.in);
 		System.out.print("Here comes the Maximum hit. Now please choose a cross line to eliminate!!!! (enter the cross line you want to hit)");
 		maxHit =  console.nextInt()-1;
+		maxHitc =(int) (Math.random()*5);
 		if (maxHit == x2 || maxHit == y2) 
 		{
 			System.out.println("You win");
+			end();
+		}
+		if (maxHit == x1 || maxHitc == y1) 
+		{
+			System.out.println("You lose");
 			end();
 		}
 		else 
@@ -136,7 +140,7 @@ public class BAttelShip2
 	}
 	
 	
-	public static void move() 
+	public static void move() throws Exception 
 	{
 		Scanner console = new Scanner(System.in);
 		System.out.println("Your turn to move, Please enter a new position (enter up, down, left, right).");
@@ -175,14 +179,14 @@ public class BAttelShip2
 	}
 	
 	
-	public static void tie() 
+	public static void tie() throws Exception 
 	{
 		System.out.print("TIE!!!!!!!!");
 		end();
 	}
 	
 	
-	public static void end() 
+	public static void end() throws Exception
 	{
 		System.out.println("The Game has ended. Do you want to play again?");
 		Scanner console = new Scanner(System.in);
@@ -196,8 +200,7 @@ public class BAttelShip2
 		else  
 		{
 			System.out.println("GoodBye");
-			x1=6;
-			StartGame();
+			throw new Exception("test exception");
 		}
 	}
 
